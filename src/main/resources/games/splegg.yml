@@ -1,0 +1,11 @@
+# Splegg settings
+enabled: true
+default-min-players: 2
+default-max-players: 16
+
+# No time limit: the match lasts until only ONE player is left.
+# Players have infinite eggs - right-click with the iron shovel to shoot one.
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR

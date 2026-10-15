@@ -1,0 +1,20 @@
+# TNT Tag settings
+enabled: true
+default-min-players: 2
+default-max-players: 16
+round-seconds: 180
+
+# Seconds a tagged player has before exploding.
+tag-fuse-seconds: 20
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR
+
+# Tagging rules
+tagging:
+  bare-hands-only: true
+  tnt-helmet-only-on-tagged-player: true
+  allow-projectile-tagging: false
+
+# TNT Tag uses only the per-player fuse; no overall match timer.

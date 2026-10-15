@@ -1,0 +1,22 @@
+# ======================================================================================
+#  TNT Run  -  /arcade reload after editing.
+# ======================================================================================
+
+enabled: true
+default-min-players: 2
+default-max-players: 24
+
+# Double jumps each player gets (0 = none).
+double-jumps: 5
+jump-forward-power: 0.5
+jump-up-power: 0.85
+
+# The floor does not break for this long after the game starts.
+start-delay-seconds: 3
+
+# A block disappears this long after somebody steps on it.
+block-vanish-delay-seconds: 0.5
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR

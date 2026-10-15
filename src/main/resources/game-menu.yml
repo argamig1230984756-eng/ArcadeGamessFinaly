@@ -1,0 +1,173 @@
+# ======================================================================================
+#  ArcadeGames - the MAIN game menu: ONE item per game.   /arcade reload after editing.
+#
+#  Opened by the nether star and by  /arcade  or  /arcade gui.
+#  Click a game = you are sent to a RANDOM arena of that game. An arena that already has players
+#  is filled FIRST (matchmaking.fill-first in config.yml) - only when none has players, an empty one is used.
+#
+#  Colour codes use &.   Slot numbers start at 0 (top-left):  row 1: 0-8   row 2: 9-17   row 3: 18-26 ...
+# ======================================================================================
+
+# false = /arcade gui opens the old arena list (gui.yml) instead.
+enabled: true
+
+title: "&8Arcade &7- &8Choose a game"
+rows: 3
+
+# Hide the item of a game that has  enabled: false  in games/<game>.yml.
+hide-disabled-games: false
+
+# true = the item stack size shows how many players are in that game.
+show-players-as-amount: false
+
+# What right-clicking a game does:  none (same as left click) | arenas (list of its arenas) | spectate (arenas to watch)
+right-click: none
+
+background:
+  enabled: true
+  material: GRAY_STAINED_GLASS_PANE
+  name: " "
+  lore: []
+
+# What {state} is replaced with.
+state-names:
+  available: "Open"
+  busy: "All arenas busy"
+  no-arenas: "No arena set up"
+  disabled: "Disabled"
+
+# Placeholders for names and lore:
+#   {game}  game name     {players} players in this game right now     {arenas} arenas of this game
+#   {free}  arenas you can join right now     {playing} arenas with a running game     {spectators} people watching
+#   {state} from state-names above      {description} = the lines in "description" of the game
+#
+# One lore per state of a game:
+lore:
+  available:
+    - "{description}"
+    - ""
+    - "&7Players: &b{players}"
+    - "&7Open arenas: &a{free}&8/&7{arenas}"
+    - ""
+    - "&eClick to join a random arena!"
+  busy:
+    - "{description}"
+    - ""
+    - "&7Players: &b{players}"
+    - "&cAll arenas are running right now."
+    - "&7Click to try again - you will join the"
+    - "&7next free arena."
+  no-arenas:
+    - "{description}"
+    - ""
+    - "&cNo arena has been set up yet."
+  disabled:
+    - "{description}"
+    - ""
+    - "&cThis game is disabled."
+
+# The item of every game: slot, material, name, description. Remove a game's block or set  enabled: false  to hide it.
+games:
+  prophunt:
+    enabled: true
+    slot: 10
+    material: BOOKSHELF
+    glow: false
+    name: "&a&lProp Hunt"
+    description:
+      - "&7Hide as a block, or"
+      - "&7hunt the hiders down!"
+  blockparty:
+    enabled: true
+    slot: 12
+    material: LIME_WOOL
+    glow: false
+    name: "&d&lBlockParty"
+    description:
+      - "&7Stand on the right colour"
+      - "&7when the music stops."
+  tntrun:
+    enabled: true
+    slot: 13
+    material: TNT
+    glow: false
+    name: "&c&lTNT Run"
+    description:
+      - "&7Keep running - the floor"
+      - "&7disappears under you!"
+  miniwalls:
+    enabled: true
+    slot: 16
+    material: WITHER_SKELETON_SKULL
+    glow: false
+    name: "&5&lMini Walls"
+    description:
+      - "&7Protect your Wither and"
+      - "&7destroy the others."
+  tnttag:
+    enabled: true
+    slot: 9
+    material: TNT
+    glow: false
+    name: "&c&lTNT Tag"
+    description:
+      - "&7Pass the tag before time runs out!"
+  templerun:
+    enabled: true
+    slot: 11
+    material: MOSSY_STONE_BRICKS
+    glow: false
+    name: "&6&lTemple Run"
+    description:
+      - "&7Run, jump and survive the course!"
+  splegg:
+    enabled: true
+    slot: 15
+    material: EGG
+    glow: false
+    name: "&b&lSplegg"
+    description:
+      - "&7Break the floor beneath rivals!"
+  bomblobbers:
+    enabled: true
+    slot: 17
+    material: SNOWBALL
+    glow: false
+    name: "&c&lBombLobbers"
+    description:
+      - "&7Two teams. Lob TNT and knock the other team off!"
+  quake:
+    enabled: true
+    slot: 18
+    material: BOW
+    glow: false
+    name: "&e&lQuake"
+    description:
+      - "&7Blast opponents with your railgun!"
+
+# Extra buttons. slot -1 or enabled: false = hidden.  {players} = players in all games.
+buttons:
+  any-game:
+    enabled: true
+    slot: 22
+    material: ENDER_EYE
+    glow: true
+    name: "&bJoin any game"
+    lore:
+      - "&7Click to be sent to a random game."
+  spectate:
+    enabled: true
+    slot: 26
+    material: CLOCK
+    glow: false
+    name: "&aWatch a game"
+    lore:
+      - "&7Spectate a running game"
+      - "&7in survival mode."
+  close:
+    enabled: false
+    slot: 18
+    material: BARRIER
+    glow: false
+    name: "&cClose"
+    lore: []

@@ -1,0 +1,9 @@
+# Quake settings
+enabled: true
+default-min-players: 2
+default-max-players: 16
+round-seconds: 180
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR

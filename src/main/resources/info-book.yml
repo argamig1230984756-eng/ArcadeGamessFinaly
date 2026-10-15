@@ -1,0 +1,47 @@
+title: "Server Info"
+author: "NO MERCY"
+
+# Use [visible text](https://url) to place a clickable link directly inside a page.
+# Each page is kept concise so it fits cleanly in the Minecraft book.
+pages:
+  - |-
+    &6&l✦ ARCADE GAMES ✦
+
+    &8Welcome to &c&lNO MERCY&8!
+    &7Choose a game, compete, and climb the leaderboard.
+
+    &2&lCOMMANDS
+    &5&l/play &8- Game menu
+    &6&l/join &8- Join a game
+    &c&l/leave &8- Leave a game
+    &a&l/spectate &8- Watch a live match
+
+    &9&lDiscord: [discord.gg/CwNFGhMeE](https://discord.gg/CwNFGhMeE)
+
+    &6&lSERVER IP
+    &c&lplay.nomercymc.fun
+  - |-
+    &6&lHOW TO PLAY
+
+    &7Use &f/play &7to browse the arcade.
+    &7Select a game and arena, then wait for the match to begin.
+
+    &e&lGAME TIPS
+    &8• &fTNT Tag &8- pass the TNT before it explodes.
+    &8• &fTemple Run &8- collect coins and reach the finish.
+    &8• &fBlockParty &8- stand on the called colour.
+    &8• &fMini Walls &8- protect your Wither.
+    &8• &fBombLobbers &8- two teams, blast the other team off the arena.
+  - |-
+    &6&lSPECTATING
+
+    &7Use &f/spectate &7or the clock in the lobby to browse matches.
+    &7Only arenas with an active game can be spectated.
+
+    &a&lGOOD LUCK!
+    &7Play fair, respect other players, and have fun.
+
+    &8Server: &cplay.nomercymc.fun
+
+# No separate links page: the Discord link is embedded directly under /spectate above.
+links: []

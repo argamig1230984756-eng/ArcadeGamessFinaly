@@ -1,0 +1,72 @@
+# ======================================================================================
+#  Prop Hunt  -  /arcade reload after editing.  Colour codes use &.
+# ======================================================================================
+
+# false = nobody can join Prop Hunt arenas (they are skipped by matchmaking too).
+enabled: true
+
+# Player limits given to NEW arenas (change one arena later with /arcade setplayers <name> <min> <max>).
+default-min-players: 2
+default-max-players: 16
+
+# ---- timing ----
+hide-seconds: 30        # hiders hide, seekers are blind + frozen for this long
+seek-seconds: 300       # seekers have this long; hiders win when it runs out
+
+# One seeker for every N players (always at least one).
+players-per-seeker: 5
+
+seeker:
+  item: IRON_SWORD
+  item-name: "&cSeeker Blade"
+  blind-while-waiting: true     # blindness while the hiders hide
+  freeze-while-waiting: true    # can't move while the hiders hide
+
+hider:
+  # The item hiders right-click a block with to copy it.
+  changer-item: NETHER_STAR
+  changer-name: "&bDisguise Changer"
+  changer-lore:
+    - "&7Right-click a solid block"
+    - "&7to turn into it."
+
+# Blocks a hider can randomly START as (one is picked per hider).
+# Use block names like OAK_LOG, CHEST, DIAMOND_BLOCK. Empty = built-in list.
+start-blocks: []
+
+# Blocks hiders may turn into with the Disguise Changer (right-click a block).
+# Empty = any solid full block. If you list blocks here, ONLY these can be used.
+allowed-blocks: []
+
+# Height of the disguise block (in blocks) for JAVA players. 0.0 = sitting exactly on the ground.
+block-y-offset: 0.0
+# Same for BEDROCK players (Geyser draws it half a block higher, so -0.5 lines it up).
+# Bedrock players are detected through Floodgate or Geyser. If you change a value: restart and test.
+bedrock-block-y-offset: -0.5
+# Backup detection: names starting with this are Bedrock (Floodgate's default prefix is "."). Empty = off.
+bedrock-name-prefix: "."
+
+# ---- how the disguise looks (fixes "my block is lighter than a placed block") ----
+# What JAVA players see the disguise as:
+#   display = a BlockDisplay whose brightness can be dimmed (default)
+#   falling = the old falling-block disguise (cannot be dimmed)
+# Bedrock players always see the falling-block copy (Bedrock cannot show display entities).
+java-render: display
+
+# Entities have no soft corner shadows like placed blocks, so they look a bit brighter.
+# The disguise brightness is set to the REAL light at the hider's spot minus this number (0-15).
+#   0 = same as the light there      2 = default      4 = clearly darker      -1 = off (client decides)
+# Too bright still? raise it. Too dark? lower it.
+light-reduction: 2
+
+# Optional: ignore the real light and use fixed values (0-15) - e.g. for arenas with weird lighting.
+light-fixed: false
+light-fixed-sky: 12
+light-fixed-block: 0
+
+# Height of the BlockDisplay disguise (Java). Change by small steps like 0.02 if it floats / sinks.
+display-y-offset: 0.0
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR

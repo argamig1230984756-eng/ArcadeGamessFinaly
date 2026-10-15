@@ -1,0 +1,123 @@
+# ======================================================================================
+#  ArcadeGames - general settings
+#  After editing any file in this folder, run  /arcade reload  (no restart needed).
+#
+#  Files in this folder:
+#    config.yml            this file (lobby, matchmaking, where players go after a match)
+#    messages.yml          every message/title players see (colour codes with &)
+#    gui.yml               the arena list menu (/arcade arenas)
+#    game-menu.yml         the MAIN menu: one item per game, click = random arena
+#    lobby-items.yml       the nether star (slot 5) / info book / clock in the hotbar
+#    info-book.yml         the pages of the server info book
+#    spectate.yml          spectating (survival mode) + the two spectate menus
+#    games/prophunt.yml    settings of each game: timers, items, kits, rounds ...
+#    games/blockparty.yml
+#    games/tntrun.yml
+#    games/partygames.yml
+#    games/miniwalls.yml
+#    arenas.yml            arena locations (written by the /arcade setup commands)
+# ======================================================================================
+
+# Where players go whenever they leave an arena: the match ended, they used /arcade leave or the
+# leave item, an admin stopped the game, they disconnected ... They ALWAYS go to the spawn below -
+# not back to the place they joined from.
+#
+# Easiest: put your spawn world's name here (a Multiverse world works fine).
+# It teleports to that world's spawn point.
+spawn-world: "spawn"
+server-ip: "play.nomercy.fun"
+
+# Optional: run a command instead (as CONSOLE). If set, spawn-world is ignored.
+# %player% is replaced with the player's name.
+#   spawn-command: "mvtp %player% spawn"
+#   spawn-command: "spawn %player%"       # EssentialsX
+spawn-command: ""
+
+# spawn    = always the spawn above                                  (default)
+# previous = send players back to exactly where they were before they joined
+return-location: spawn
+
+# ---------------------------------------------------------------- Waiting lobby
+lobby:
+  # Seconds of countdown once an arena has its minimum number of players.
+  countdown-seconds: 15
+  # Seconds everybody stays in the arena after a game is decided, before being sent to spawn.
+  end-delay-seconds: 5
+  # The item that leaves the lobby when right-clicked (any item name, e.g. RED_BED, BARRIER).
+  leave-item: RED_BED
+
+# ---------------------------------------------------------------- Matchmaking
+# Used by  /arcade join            (any game)
+#          /arcade join prophunt   (any arena of that game)
+#          /arcade join <arena>    (that exact arena)
+matchmaking:
+  # How an arena is chosen when the player did not name one:
+  #   random   - a random arena that still has room         (default)
+  #   fullest  - the arena with the most players waiting (fills one arena first)
+  #   emptiest - the arena with the fewest players waiting
+  #   ordered  - the first arena in arenas.yml that has room
+  mode: random
+
+  # With mode "random": if somebody is already waiting in an arena, send new players there first, so
+  # games actually fill up and start. Only EMPTY arenas are picked at random.
+  # Set to false for a completely random choice every time.
+  prefer-lobbies-with-players: true
+
+  # When the arena a player asked for is full, already running, or not ready: send them to another
+  # arena of the same game instead of showing an error.
+  fallback-if-full: true
+
+  # FILL FIRST: if an arena already has players waiting, every new player is sent THERE until it is
+  # full (the fullest arena first). Only when no arena has players is a random empty one used.
+  # Works for the game menu, /arcade join and the random buttons, for all five games.
+  fill-first: true
+
+  # Tell the player which arena they were sent to.
+  join-message: true
+
+# How often the open game / spectate menus update their numbers (ticks, 20 = 1 second). 0 = never.
+menu-refresh-ticks: 20
+
+# ---------------------------------------------------------------- Chat prefix
+# The text in front of every message the plugin sends to players. Colour codes with &.
+# Keep a space at the end. Examples:  "&8[&bArcade&8] &7"   "&6&lNO MERCY &8» &7"   "" (no prefix)
+# Applied by /arcade reload.
+prefix: "&8[&bArcade&8] &7"
+
+# ---------------------------------------------------------------- Action bar
+# Text above the hotbar (countdowns, timers, "jumps left", coin pickups ...). OFF by default:
+# timers and stats belong on the scoreboard. Set to true to show those hints again.
+actionbar:
+  enabled: false
+
+
+# ---------------------------------------------------------------- Party Games party queue
+party:
+  enabled: true
+  max-size: 16
+  allow-solo-queue: true
+  invite-timeout-seconds: 60
+  menu-title: "&5&lParty Menu"
+
+
+# PlaceholderAPI placeholders (requires PlaceholderAPI) - for TAB / DeluxeHub / any scoreboard plugin:
+#   %arcadegames_game%            id of the player's current game (prophunt, tntrun ...) or empty
+#   %arcadegames_players_<game>%  players in a game, e.g. %arcadegames_players_splegg%
+#   %arcadegames_wins% %arcadegames_losses%
+# While in a game (waiting lobby or match):
+#   %arcadegames_alive%  %arcadegames_total%  (also players_left / players_total)
+#   %arcadegames_time_left%  time left; Prop Hunt = time left in the current phase,
+#                            Block Party = seconds until the wrong blocks disappear
+#   %arcadegames_elapsed%    time since the match started (m:ss) - use it for games without a time limit
+#   %arcadegames_state%      waiting / starting / active / ending
+#   %arcadegames_countdown%  seconds until the match starts      %arcadegames_arena% %arcadegames_game_name%
+#   %arcadegames_min_players% %arcadegames_max_players%
+# Per game:
+#   Prop Hunt   %arcadegames_role% %arcadegames_phase% %arcadegames_hiders% %arcadegames_seekers%
+#   Block Party %arcadegames_round% %arcadegames_max_rounds% %arcadegames_color%
+#   Mini Walls  %arcadegames_team% %arcadegames_team_red% %arcadegames_team_green% %arcadegames_team_blue%
+#               %arcadegames_team_yellow% (alive/total of that team, "-" if the team is not playing)
+#               %arcadegames_walls% (time until the walls drop, then "Dropped")
+#   BombLobbers %arcadegames_team% %arcadegames_team_red% %arcadegames_team_blue%
+#   Temple Run  %arcadegames_coins% %arcadegames_top1% %arcadegames_top2% %arcadegames_top3% %arcadegames_place%
+#   TNT Tag     %arcadegames_it%

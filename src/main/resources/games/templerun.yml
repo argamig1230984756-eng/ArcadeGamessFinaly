@@ -1,0 +1,29 @@
+# Temple Run settings
+enabled: true
+default-min-players: 2
+default-max-players: 16
+round-seconds: 300
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR
+
+# Temple Run course tools register checkpoints, coin spawns and finish plates in arenas.yml.
+course:
+  checkpoints-enabled: true
+  coins-enabled: true
+  finishes-enabled: true
+  return-to-checkpoint-on-fall: true
+  coin-value: 1
+  coin-item: GOLD_INGOT # Any valid Minecraft material, e.g. GOLD_INGOT, GOLD_NUGGET, DIAMOND
+  coin-height: 0.35 # One shared height (blocks) for every Temple Run coin above its saved location
+  coin-size: 0.65 # Display scale, adjustable for every Temple Run arena through this one setting
+  coin-face-players: true # true = every coin turns to look at the player; false = coin stays put and spins
+  coin-sound:
+    enabled: true
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP # Sound name (ENTITY_EXPERIENCE_ORB_PICKUP or entity.experience_orb.pickup); only the collecting player hears it
+    volume: 1.0
+    pitch: 1.6
+  time-limit-seconds: 300 # Five-minute parkour timer
+  announce-finish-order: true
+  results-count: 3

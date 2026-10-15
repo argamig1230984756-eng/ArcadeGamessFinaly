@@ -1,0 +1,122 @@
+# ======================================================================================
+#  ArcadeGames - messages.   /arcade reload after editing.
+#  Colour codes use & (&c red, &a green, &l bold ...). Keep the {placeholders} - the plugin fills them in.
+#  Keep the quotes around every line.
+# ======================================================================================
+
+common:
+  joined: "&e{player} &7joined &8(&b{count}&8/&b{max}&8)"
+  left: "&e{player} &7left the game."
+  you-left: "You left the game."
+  arena-full: "That arena is full."
+  game-running: "That game is already running."
+  countdown: "&7Starting in &e{seconds}&7s..."
+  countdown-cancelled: "&cNot enough players - countdown cancelled."
+  eliminated-title: "&c&lELIMINATED"
+  eliminated-subtitle: "&7You are now spectating"
+  leave-item: "&cLeave &7(Right Click)"
+  commands-blocked: "&cYou can only use &e/arcade leave &cwhile in a game."
+  nobody: "Nobody"
+
+join:
+  only-players: "&cOnly players can do that."
+  already-in-game: "&cYou are already in a game. Use &e/arcade leave&c."
+  spectating: "&cYou are spectating. Stop first with &e/arcade leave&c (or the red bed)."
+  unknown: "&cUnknown arena or game &e{name}"
+  game-disabled: "&c{game} is currently disabled."
+  none-available: "&cNo arena is available right now."
+  none-available-game: "&cNo {game} arena is available right now."
+  not-ready: "&cThat arena isn't ready: {problem}"
+  joining: "&7Joining &e{arena} &8(&7{game}&8)"
+  redirected: "&e{requested} &7can't be joined (&c{reason}&7) - sending you to &e{arena}&7."
+
+leave:
+  not-in-game: "&cYou are not in a game."
+
+reload:
+  done: "&aSettings reloaded (config.yml, messages.yml, games/*.yml)."
+
+prophunt:
+  seeker-title: "&c&lSEEKER"
+  seeker-subtitle: "&7Released in {seconds} seconds"
+  hider-title: "&a&lHIDER"
+  hider-subtitle: "&7You are a block - hide!"
+  chosen: "&e{count} &7seeker(s) were chosen. Hiders have &e{seconds}s &7to hide!"
+  released: "&c&lThe seekers have been released!"
+  release-countdown: "&eSeekers released in &b{seconds}s"
+  role-hider: "&aHider"
+  role-seeker: "&cSeeker"
+  status: "{role} &8| &7Hiders left: &e{hiders} &8| &7Time: &e{time}"
+  caught: "&c{victim} &7was found by &e{seeker}&7! &e{hiders} &7hider(s) left."
+  found-title: "&cFound!"
+  found-subtitle: "&7You are now a seeker"
+  cant-disguise: "&cYou can't disguise as that block."
+  disguised: "&aYou are now a &e{block}"
+  hiders-win-time: "&a&lHiders win! &7They survived: &f{names}"
+  hiders-win-left: "&a&lHiders win! &7All the seekers left."
+  seekers-win: "&c&lSeekers win! &7Every hider was found."
+
+blockparty:
+  round-subtitle: "&7Round {round} - stand on this color!"
+  fell: "&c{player} &7fell off! &e{left} &7left."
+  over: "&6&lBlockParty over! &eSurvivors: &f{names}"
+  win: "&6&l{winner} &ewon BlockParty!"
+
+tntrun:
+  title: "&c&lTNT RUN"
+  subtitle: "&7Keep moving - the floor disappears!"
+  start: "&eThe floor starts to vanish in {seconds} seconds. You have &b{jumps} double jumps&e!"
+  fell: "&c{player} &7fell! &e{left} &7left."
+  jumps-left: "&bDouble jumps left: &e{jumps}"
+  win: "&6&l{winner} &ewon TNT Run!"
+
+partygames:
+  round: "&6Round {round}/{total}: &e{title} &7- {description}"
+  round-title: "&e&l{title}"
+  go: "&a&lGO!"
+  intro-countdown: "&eStarting in &b{seconds}"
+  out: "&c{player} &7is out!"
+  crushed: "&c{player} &7was crushed!"
+  round-over: "&6Round over! &7Survivors: &e{names}"
+  nobody-survived: "nobody"
+  standings: "&7Standings: {list}"
+  finished: "&6&lPARTY GAMES FINISHED!"
+  finished-place: "&e#{place} &f{player} &7- &b{points} points"
+
+miniwalls:
+  team-title: "{color}&l{team} Team"
+  team-subtitle: "&7Protect your Wither!"
+  start: "&eProtect your Wither and destroy the others! Once your Wither dies, you can no longer respawn."
+  wither-name: "{color}{team} Wither"
+  wither-name-hp: "{color}{team} Wither &7({hp} HP)"
+  killed-by: "{victim} &7was killed by {killer}"
+  died: "{victim} &7died"
+  own-wither: "&cYou can't hurt your own Wither!"
+  wither-destroyed: "{color}{team} Team&c's Wither was destroyed! &7They can no longer respawn."
+  wither-died-title: "&c&lYour Wither died!"
+  wither-died-subtitle: "&7No more respawns"
+  time-up: "&6&lTime is up! {result}"
+  time-up-nobody: "&7Nobody wins."
+  time-up-winner: "{color}{team} Team &6wins with the healthiest Wither!"
+  nobody-won: "&6&lNobody won Mini Walls!"
+  team-won: "{color}&l{team} Team &6won Mini Walls!"
+  walls-countdown: "&eThe walls drop in &f{seconds}s&e! Get ready!"
+  walls-removed: "&6&lThe walls have dropped! &eFight for your Wither!"
+
+bomblobbers:
+  start: "&eBlast the other team off the arena with TNT! Last team standing wins. &7Double-jump to leap."
+  team-title: "{color}&l{team} Team"
+  team-subtitle: "&7Knock the other team off the arena!"
+  fell: "{color}{player} &7fell off the arena!"
+  team-won: "{color}&l{team} Team &6won BombLobbers!"
+  nobody-won: "&6&lNobody won BombLobbers!"
+
+spectate:
+  disabled: "&cSpectating is disabled."
+  unavailable: "&cYou can't spectate that arena right now."
+  not-running: "&cNo game is running in that arena right now."
+  started: "&7You are now spectating &e{arena} &8(&7{game}&8)&7. Use the red bed to stop."
+  stopped: "&7You stopped spectating."
+  game-ended: "&7The game you were watching has ended."
+  too-far: "&cYou can't go that far from the arena."
+  commands-blocked: "&cYou can only use &e/arcade leave &cwhile spectating."

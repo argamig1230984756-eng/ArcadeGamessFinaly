@@ -1,0 +1,20 @@
+# ======================================================================================
+#  BombLobbers - /arcade reload after editing.
+#  Two teams: spawn 1 = RED team, spawn 2 = BLUE team  (/arcade setspawn <arena> 1  and  2).
+#  No timer: the match lasts until only one team is left. Players are split evenly.
+# ======================================================================================
+enabled: true
+default-min-players: 2
+default-max-players: 16
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR
+
+# Thrown TNT. It is thrown exactly where you look and then falls with normal gravity (an arc).
+tnt:
+  throw-strength: 1.25      # speed along your view direction. 0.6 = short toss, 1.25 = default, 2.0 = long throw
+  throw-lift: 0.1           # extra upward speed on top of your aim (0 = none, higher = flatter shots arc higher)
+  fuse-ticks: 50            # 20 ticks = 1 second until it explodes
+  supply-interval-ticks: 160  # a player below supply-max TNT receives one TNT this often
+  supply-max: 3

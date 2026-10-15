@@ -1,0 +1,27 @@
+# ======================================================================================
+#  BlockParty  -  /arcade reload after editing.
+# ======================================================================================
+
+enabled: true
+default-min-players: 2
+default-max-players: 16
+
+# The game ends after this many rounds; everybody still alive wins.
+max-rounds: 30
+
+# How long players have to find the colour. Round N gets:
+#   max( round-time-min-seconds , round-time-start-seconds - N * round-time-decrease-per-round-seconds )
+round-time-start-seconds: 7.5
+round-time-decrease-per-round-seconds: 0.35
+round-time-min-seconds: 1.5
+
+# Floor pattern: tiles are big-tile-size x big-tile-size blocks until the round below, then single blocks.
+big-tile-size: 2
+big-tiles-until-round: 15
+
+# How long the floor stays empty before the next round starts.
+clear-pause-seconds: 2.5
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR

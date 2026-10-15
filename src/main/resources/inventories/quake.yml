@@ -1,0 +1,14 @@
+# Quake loadout. Edit and run /arcade reload.
+# Item formats (any mix works):
+#   - "ARROW:32"                 material:amount
+#   - "ARROW: 32"                also fine
+#   - material: BOW              full form (only material is required)
+#     amount: 1
+#     slot: 0                    inventory slot 0-35 (0-8 = hotbar); default = first free slot
+#     name: "&bRailgun"
+#     enchants: ["POWER:3", "UNBREAKING:1"]
+# An empty list (items: []) gives players nothing. Run /arcade reload after editing; the console
+# prints "Loaded loadout ..." so you can see the change was read. Invalid entries are logged and skipped.
+items:
+  - "BOW"
+  - "ARROW:64"

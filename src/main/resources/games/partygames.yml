@@ -1,0 +1,111 @@
+# ======================================================================================
+#  Party Games  -  /arcade reload after editing.
+#  A series of short mini-games; points are given by survival order, highest total wins.
+# ======================================================================================
+
+enabled: true
+default-min-players: 2
+default-max-players: 16
+
+intro-seconds: 5          # countdown before each mini-game
+break-seconds: 4          # pause after each mini-game
+survivor-bonus: 3         # extra points for everyone who survives a round
+random-order: true        # false = always the order listed under "minigames"
+
+# Falling hazards (Anvil Rain, Bombardment) get harder over time.
+difficulty:
+  interval-step-seconds: 10        # every N seconds hazards fall a little faster
+  extra-hazard-every-seconds: 15   # every N seconds one more hazard falls per drop
+
+minigames:
+  anvil-rain:
+    enabled: true
+    title: "Anvil Rain"
+    description: "Dodge the falling anvils!"
+    seconds: 45
+    start-interval-ticks: 14   # ticks between drops at the start (20 ticks = 1 second)
+    min-interval-ticks: 3      # fastest it ever gets
+  bombardment:
+    enabled: true
+    title: "Bombardment"
+    description: "Dodge the falling TNT!"
+    seconds: 45
+    start-interval-ticks: 16
+    min-interval-ticks: 4
+    fuse-ticks: 45
+  sumo:
+    enabled: true
+    title: "Sumo"
+    description: "Knock everyone off the platform!"
+    seconds: 90
+    item-name: "&eKnockback Stick"
+  spleef:
+    enabled: true
+    title: "Spleef"
+    description: "Break the snow under your rivals!"
+    seconds: 90
+    item-name: "&bSnow Digger"
+
+  pig-fishing:
+    enabled: true
+    title: "Pig Fishing"
+    description: "Fish pigs toward you and stay alive!"
+    seconds: 60
+  avalanche:
+    enabled: true
+    title: "Avalanche"
+    description: "Dodge the falling snow!"
+    seconds: 45
+    start-interval-ticks: 16
+    min-interval-ticks: 4
+  trampolino:
+    enabled: true
+    title: "Trampolino"
+    description: "Bounce and avoid falling!"
+    seconds: 60
+  punch-the-bats:
+    enabled: true
+    title: "Punch The Bats"
+    description: "Knock other players away!"
+    seconds: 60
+  minecart-racing:
+    enabled: true
+    title: "Minecart Racing"
+    description: "Race around the arena!"
+    seconds: 60
+  animal-slaughter:
+    enabled: true
+    title: "Animal Slaughter"
+    description: "Collect points by hunting animals!"
+    seconds: 60
+  volcano:
+    enabled: true
+    title: "Volcano"
+    description: "Dodge the erupting volcano!"
+    seconds: 45
+    start-interval-ticks: 16
+    min-interval-ticks: 4
+  hoe-hoe-hoe:
+    enabled: true
+    title: "Hoe Hoe Hoe"
+    description: "Use your hoe and outlast everyone!"
+    seconds: 60
+  frozen-floor:
+    enabled: true
+    title: "Frozen Floor"
+    description: "Keep moving as the ice disappears!"
+    seconds: 60
+  floor-is-lava:
+    enabled: true
+    title: "The Floor Is Lava"
+    description: "Stay above the lava!"
+    seconds: 60
+  jungle-jump:
+    enabled: true
+    title: "Jungle Jump"
+    description: "Jump through the jungle and survive!"
+    seconds: 60
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR

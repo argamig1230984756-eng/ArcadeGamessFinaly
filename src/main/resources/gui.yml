@@ -1,0 +1,171 @@
+# ======================================================================================
+#  ArcadeGames - arena menu (GUI).     /arcade reload after editing - no restart needed.
+#
+#  Open it with   /arcade gui   (or /arcade menu).    /arcade gui prophunt   shows one game only.
+#  Colour codes use &.  Keep the {placeholders} - the plugin fills them in.
+# ======================================================================================
+
+# true  = typing just  /arcade  opens this menu.   false = it shows the help text.
+open-on-arcade-command: true
+
+title: "&8Arcade &7- &8Choose an arena"
+
+# Size of the menu in rows (1-6). Every row has 9 slots: 3 rows = 27 slots, 6 rows = 54 slots.
+rows: 3
+
+# How often an open menu updates its player counts (ticks, 20 = 1 second). 0 = never.
+refresh-ticks: 20
+
+# ---------------------------------------------------------------- which arenas are shown
+hide-not-ready: true        # hide arenas that are not set up yet
+hide-disabled-games: true   # hide arenas of games that have  enabled: false
+show-running: true          # false = show only arenas a player can still join right now
+sort: game                  # order (as in arenas.yml) | name | game | players (most players first)
+
+# ---------------------------------------------------------------- where the arenas go
+# Slot numbers start at 0 in the top-left corner:
+#   row 1: 0-8     row 2: 9-17     row 3: 18-26     row 4: 27-35     row 5: 36-44     row 6: 45-53
+# Arenas fill these slots in order. The number of slots in this list = arenas per page.
+# More arenas than slots? The menu gets pages (see the previous / next buttons below).
+arena-slots: [10, 11, 12, 13, 14, 15, 16]
+
+# Fills every slot that holds nothing else (the background of the menu).
+# material: AIR = no background at all.
+background:
+  enabled: true
+  material: GRAY_STAINED_GLASS_PANE
+  name: " "
+  lore: []
+
+# Shown in an arena slot that has no arena (when there are fewer arenas than arena-slots).
+empty-slot:
+  enabled: true
+  material: LIGHT_GRAY_STAINED_GLASS_PANE
+  name: "&8Empty slot"
+  lore: []
+
+# ---------------------------------------------------------------- the arena item
+# The item size shows how many players are inside (1 if empty). false = always 1.
+show-players-as-amount: true
+
+# The icon of each game. It is used wherever a state below has  material: GAME
+game-icons:
+  prophunt: BOOKSHELF
+  blockparty: LIME_WOOL
+  tntrun: TNT
+  partygames: FIREWORK_ROCKET
+  miniwalls: WITHER_SKELETON_SKULL
+
+# What {state} is replaced with.
+state-names:
+  waiting: "Waiting for players"
+  starting: "Starting soon"
+  active: "In game"
+  ending: "Finishing"
+  full: "Full"
+  not-ready: "Not set up"
+  disabled: "Disabled"
+
+# Placeholders you can use in names and lore of an arena:
+#   {arena}    arena name                       {game}     game name (Prop Hunt, TNTRun ...)
+#   {state}    from state-names above           {players}  players inside right now
+#   {min}      minimum players to start         {max}      maximum players
+#   {free}     places still free                {needed}   players still needed to start (0 = enough)
+#   {problem}  what is missing (not-set-up arenas only)
+#
+# Each state has:  material (GAME = the game's icon above, or any item name)  name  lore  glow (true/false)
+states:
+  waiting:
+    material: GAME
+    glow: false
+    name: "&a{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&7Status: &a{state}"
+      - "&7Players: &b{players}&8/&b{max}"
+      - "&7Minimum to start: &e{min}"
+      - "&7Still needed: &e{needed}"
+      - ""
+      - "&eClick to join!"
+  starting:
+    material: GAME
+    glow: true
+    name: "&e{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&7Status: &e{state}"
+      - "&7Players: &b{players}&8/&b{max}"
+      - "&7Free places: &a{free}"
+      - ""
+      - "&eClick to join!"
+  active:
+    material: GAME
+    glow: false
+    name: "&c{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&7Status: &c{state}"
+      - "&7Players: &b{players}&8/&b{max}"
+      - ""
+      - "&7A game is running here."
+      - "&eClick to join another {game} arena."
+  ending:
+    material: GAME
+    glow: false
+    name: "&c{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&7Status: &c{state}"
+      - "&7Players: &b{players}&8/&b{max}"
+  full:
+    material: GAME
+    glow: false
+    name: "&6{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&7Status: &6{state}"
+      - "&7Players: &b{players}&8/&b{max}"
+      - ""
+      - "&eClick to join another {game} arena."
+  not-ready:
+    material: BARRIER
+    glow: false
+    name: "&8{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&cNot set up yet: &7{problem}"
+  disabled:
+    material: BARRIER
+    glow: false
+    name: "&8{arena}"
+    lore:
+      - "&7Game: &f{game}"
+      - "&cThis game is disabled."
+
+# ---------------------------------------------------------------- buttons
+# slot: where it goes (-1 or enabled: false = not shown).   Extra placeholders: {page} {pages} {arenas}
+buttons:
+  # Joins any free arena (of the game you opened the menu for, or of any game).
+  random:
+    enabled: true
+    slot: 22
+    material: ENDER_EYE
+    glow: true
+    name: "&bJoin any arena"
+    lore:
+      - "&7Click to be sent to a free arena."
+  # Only shown when there is a page before / after this one.
+  previous:
+    enabled: true
+    slot: 18
+    material: ARROW
+    glow: false
+    name: "&ePrevious page &7({page}/{pages})"
+    lore: []
+  next:
+    enabled: true
+    slot: 26
+    material: ARROW
+    glow: false
+    name: "&eNext page &7({page}/{pages})"
+    lore: []

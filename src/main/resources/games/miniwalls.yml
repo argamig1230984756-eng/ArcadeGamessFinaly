@@ -1,0 +1,43 @@
+# ======================================================================================
+#  Mini Walls  -  /arcade reload after editing.
+#  Up to 4 teams, each protects a Wither. Once your Wither dies you have no more respawns.
+# ======================================================================================
+
+enabled: true
+default-min-players: 2
+default-max-players: 16
+
+wither-health: 300
+
+# Match length. When time is up the team with the healthiest Wither wins. 0 = no time limit.
+time-limit-minutes: 15
+
+# Items every player gets at the start and after each respawn (armor is dyed leather in the team colour).
+# Format:  MATERIAL   or   MATERIAL:amount
+kit:
+  - "STONE_SWORD"
+  - "BOW"
+  - "ARROW:32"
+  - "STONE_PICKAXE"
+  - "COBBLESTONE:64"
+  - "COOKED_BEEF:16"
+  - "GOLDEN_APPLE:2"
+
+# Automatically remove the configured wall blocks after the match begins.
+wall-removal-seconds: 30 # Seconds before the wall drops (also configurable under wall-regions below)
+wall-materials:
+  - GLASS
+  - WHITE_STAINED_GLASS
+  - RED_STAINED_GLASS
+  - BLUE_STAINED_GLASS
+  - YELLOW_STAINED_GLASS
+  - GREEN_STAINED_GLASS
+
+# What happens when a player loses: SPECTATOR or LOBBY.
+elimination:
+  mode: SPECTATOR
+
+# Registered /arcade wall <arena> <team> regions are removed after the timer too.
+wall-regions:
+  enabled: true
+  removal-seconds: 30

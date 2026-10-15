@@ -1,0 +1,79 @@
+# ======================================================================================
+#  ArcadeGames - hotbar items (nether star, info book, clock).   /arcade reload after editing.
+#  Colour codes use &.   Hotbar slots are numbered 1-9 (1 = far left, 5 = middle, 9 = far right).
+# ======================================================================================
+
+# false = nobody gets any of these items.
+enabled: true
+
+give-on-join: true      # when a player joins the server
+give-on-return: true    # after a game, after spectating, after /arcade leave
+give-on-respawn: true   # after dying
+give-delay-ticks: 5     # wait a moment so other plugins' join kits don't overwrite them
+
+# Players can't drop / move / swap these items (admins in creative mode still can).
+protect: true
+
+# Which clicks use the item:  right | left | both
+click: both
+
+# Only give the items in these worlds. Empty list = every world.
+#   worlds: [spawn, lobby]
+worlds: []
+
+# What an item does (action):
+#   games-menu     the main menu - one item per game (game-menu.yml)
+#   spectate-menu  all games -> arenas -> watch a game (spectate.yml)
+#   info-book      the server info book (info-book.yml)
+#   arena-menu     the arena list menu (gui.yml)
+#   leave          /arcade leave
+#   command:<cmd>  the player runs a command, e.g.  command:spawn     (no slash)
+#   console:<cmd>  the console runs a command, %player% = the player's name
+#   none           does nothing
+#
+# You can add more items: copy one block, give it a new name (e.g. shop) and a different slot.
+items:
+  star:
+    enabled: true
+    slot: 5
+    material: NETHER_STAR
+    glow: true
+    name: "&b&lPlay Games &7(Right Click)"
+    lore:
+      - "&7Open the game menu and"
+      - "&7jump into a game."
+    action: games-menu
+
+  book:
+    enabled: true
+    slot: 4
+    material: BOOK
+    glow: false
+    name: "&e&lServer Info &7(Right Click)"
+    lore:
+      - "&7Rules, commands and how"
+      - "&7the games work."
+    action: info-book
+
+  clock:
+    enabled: true
+    slot: 6
+    material: CLOCK
+    glow: false
+    name: "&a&lSpectate &7(Right Click)"
+    lore:
+      - "&7Watch a game that is"
+      - "&7being played right now."
+    action: spectate-menu
+
+
+  party:
+    enabled: true
+    slot: 7
+    material: FIREWORK_ROCKET
+    glow: true
+    name: "&d&lParty Games &7(Right Click)"
+    lore:
+      - "&7Create a party and invite friends."
+      - "&7Click to choose a Party Games arena."
+    action: party-menu

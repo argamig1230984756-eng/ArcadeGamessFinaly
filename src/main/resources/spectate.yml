@@ -1,0 +1,202 @@
+# ======================================================================================
+#  ArcadeGames - spectating + the two spectate menus.   /arcade reload after editing.
+#
+#  The clock in the hotbar opens menu 1 (all games). Click a game -> menu 2 (all arenas of that game).
+#  Click an arena -> you watch it.   Or:  /arcade spectate [arena|game]
+#
+#  Where spectators appear:  /arcade setspectator <arena>  (also used for eliminated players).
+#  No spot set = the area above the arena is used.
+#  Colour codes use &.   Slot numbers start at 0 (top-left).
+# ======================================================================================
+
+# false = nobody can spectate.
+enabled: true
+
+settings:
+  # The game mode of a spectator. SURVIVAL as requested (they can fly but cannot touch anything).
+  gamemode: SURVIVAL
+  flight: true            # can fly around
+  invisible: true         # players don't see them
+  invulnerable: true      # can't be hurt
+  collidable: false       # players can't push them
+  block-commands: true    # only /arcade commands while spectating (admins excluded)
+
+  # true  = you can also watch arenas that are still waiting for players
+  # false = only arenas where a game is running
+  allow-waiting-arenas: false
+
+  # true = when the game ends, spectators are sent back to the spawn (config.yml: spawn-world)
+  kick-when-game-ends: true
+
+  # Spectators are pulled back if they get further than this many blocks away from the spectator spot.
+  # 0 = no limit.
+  max-distance: 100
+
+  # The item that stops spectating (right-click).
+  leave-item:
+    slot: 9
+    material: RED_BED
+    glow: false
+    name: "&cStop spectating &7(Right Click)"
+    lore: []
+
+# ---------------------------------------------------------------- menu 1: all games
+# Placeholders: {game} {arenas} {players} {spectators} and {description}
+games-menu:
+  title: "&8Spectate &7- &8Choose a game"
+  rows: 3
+  background:
+    enabled: true
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+    lore: []
+  lore:
+    - "{description}"
+    - ""
+    - "&7Arenas: &b{arenas}"
+    - "&7Players: &b{players}"
+    - "&7Watching: &b{spectators}"
+    - ""
+    - "&eClick to see the arenas!"
+  lore-no-arenas:
+    - "{description}"
+    - ""
+    - "&cNo arena has been set up yet."
+  games:
+    prophunt:
+      enabled: true
+      slot: 10
+      material: BOOKSHELF
+      glow: false
+      name: "&a&lProp Hunt"
+      description:
+        - "&7Hiders vs seekers."
+    blockparty:
+      enabled: true
+      slot: 12
+      material: LIME_WOOL
+      glow: false
+      name: "&d&lBlockParty"
+      description:
+        - "&7Stand on the right colour."
+    tntrun:
+      enabled: true
+      slot: 13
+      material: TNT
+      glow: false
+      name: "&c&lTNT Run"
+      description:
+        - "&7The floor disappears."
+    partygames:
+      enabled: true
+      slot: 14
+      material: FIREWORK_ROCKET
+      glow: false
+      name: "&e&lParty Games"
+      description:
+        - "&7Four mini-games in a row."
+    miniwalls:
+      enabled: true
+      slot: 16
+      material: WITHER_SKELETON_SKULL
+      glow: false
+      name: "&5&lMini Walls"
+      description:
+        - "&7Protect your Wither."
+  buttons:
+    close:
+      enabled: false
+      slot: 22
+      material: BARRIER
+      glow: false
+      name: "&cClose"
+      lore: []
+
+# ---------------------------------------------------------------- menu 2: arenas of one game
+# Placeholders: {game} (title), {arena} {state} {players} {max} {min} {spectators}
+arenas-menu:
+  title: "&8Spectate &7- &8{game}"
+  rows: 4
+  # Slots that hold arenas (more arenas than slots = pages).
+  arena-slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25]
+  show-players-as-amount: true
+  background:
+    enabled: true
+    material: GRAY_STAINED_GLASS_PANE
+    name: " "
+    lore: []
+  state-names:
+    waiting: "Waiting for players"
+    starting: "Starting soon"
+    active: "In game"
+    ending: "Finishing"
+  # Shown when a game has no arena you can watch.
+  no-arenas:
+    slot: 13
+    material: BARRIER
+    name: "&cNothing to watch"
+    lore:
+      - "&7There is no {game} arena to watch."
+  # material: GAME = the icon of the game from menu 1 above, or any item name.
+  states:
+    waiting:
+      material: GAME
+      glow: false
+      name: "&e{arena}"
+      lore:
+        - "&7Status: &e{state}"
+        - "&7Players: &b{players}&8/&b{max}"
+        - "&7Watching: &b{spectators}"
+        - ""
+        - "&eClick to spectate!"
+    starting:
+      material: GAME
+      glow: true
+      name: "&6{arena}"
+      lore:
+        - "&7Status: &6{state}"
+        - "&7Players: &b{players}&8/&b{max}"
+        - "&7Watching: &b{spectators}"
+        - ""
+        - "&eClick to spectate!"
+    active:
+      material: GAME
+      glow: true
+      name: "&a{arena}"
+      lore:
+        - "&7Status: &a{state}"
+        - "&7Players: &b{players}&8/&b{max}"
+        - "&7Watching: &b{spectators}"
+        - ""
+        - "&eClick to spectate!"
+    ending:
+      material: GAME
+      glow: false
+      name: "&c{arena}"
+      lore:
+        - "&7Status: &c{state}"
+        - "&7Players: &b{players}&8/&b{max}"
+        - ""
+        - "&eClick to spectate!"
+  buttons:
+    back:
+      enabled: true
+      slot: 31
+      material: ARROW
+      glow: false
+      name: "&eBack to the games"
+      lore: []
+    previous:
+      enabled: true
+      slot: 27
+      material: ARROW
+      glow: false
+      name: "&ePrevious page &7({page}/{pages})"
+      lore: []
+    next:
+      enabled: true
+      slot: 35
+      material: ARROW
+      glow: false
+      name: "&eNext page &7({page}/{pages})"
+      lore: []
